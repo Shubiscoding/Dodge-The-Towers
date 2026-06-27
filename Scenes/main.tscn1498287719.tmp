@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://bp703i14xel6"]
+
+[ext_resource type="Script" uid="uid://cctf0gqf6j1jj" path="res://Scripts/main.gd" id="1_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://tvab24387o5k" path="res://Scenes/bird.tscn" id="1_jjgbg"]
+[ext_resource type="Texture2D" uid="uid://d31kvk27wi1e2" path="res://Assets/bg.jpg" id="2_8gbba"]
+[ext_resource type="FontFile" uid="uid://d08acq0h0yijb" path="res://fonts/MonsterFriendFore.otf" id="4_jjvhh"]
+[ext_resource type="Theme" uid="uid://3jbhat3k0ads" path="res://preuse.tres" id="5_kry3j"]
+[ext_resource type="PackedScene" uid="uid://cfa7dfu64iihp" path="res://Scenes/menu.tscn" id="6_21xkr"]
+
+[node name="Main" type="Node2D" unique_id=1997216893]
+script = ExtResource("1_bo1nx")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1298567525]
+texture_filter = 1
+offset_right = 1434.6666
+offset_bottom = 807.0
+texture = ExtResource("2_8gbba")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=775765472]
+texture_filter = 1
+offset_left = 1434.48
+offset_right = 2869.1597
+offset_bottom = 807.0
+texture = ExtResource("2_8gbba")
+flip_h = true
+
+[node name="Bird" parent="." unique_id=1850991169 instance=ExtResource("1_jjgbg")]
+visible = false
+position = Vector2(97, 342)
+
+[node name="Towers" type="Node2D" parent="." unique_id=1741339882]
+
+[node name="Timer" type="Timer" parent="." unique_id=125696227]
+wait_time = 1.5
+one_shot = true
+autostart = true
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1544189722]
+visible = false
+
+[node name="ScorePanel" type="Panel" parent="HUD" unique_id=568387974]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="ScoreLabel" type="Label" parent="HUD/ScorePanel" unique_id=1406675971]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -49.07
+offset_top = -17.5
+offset_right = 164.93
+offset_bottom = 17.5
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_jjvhh")
+theme_override_font_sizes/font_size = 34
+text = "SCORE:0"
+vertical_alignment = 1
+
+[node name="Restart" type="CanvasLayer" parent="." unique_id=92034713]
+visible = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Restart" unique_id=849424513]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -247.5
+offset_top = -99.0
+offset_right = 247.5
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = ExtResource("5_kry3j")
+theme_override_constants/line_separation = 21
+theme_override_fonts/normal_font = ExtResource("4_jjvhh")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "YOU [color=red]DIED...[/color]
+press ENTER to 
+restart the game!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Overlay" type="CanvasLayer" parent="Restart" unique_id=58794714]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Restart/Overlay" unique_id=1921909717]
+offset_right = 600.0
+offset_bottom = 800.0
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Restart/Overlay/ColorRect" unique_id=1771606519]
+color = Color(0, 0, 0, 0.45882353)
+
+[node name="MenuThings" type="Node2D" parent="." unique_id=1138734087]
+
+[node name="Menu" parent="MenuThings" unique_id=136682894 instance=ExtResource("6_21xkr")]
+z_index = 2
+position = Vector2(305, 233)
+
+[node name="Panel" type="Panel" parent="MenuThings" unique_id=1030447935]
+visible = false
+offset_right = 600.0
+offset_bottom = 800.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MenuThings/Panel" unique_id=2106008628]
+modulate = Color(0.8089983, 0.8089983, 0.8089982, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -247.0
+offset_top = 104.0
+offset_right = 248.00012
+offset_bottom = 302.00012
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = ExtResource("5_kry3j")
+theme_override_constants/line_separation = 21
+theme_override_fonts/normal_font = ExtResource("4_jjvhh")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "press [color=green] ENTER [/color] to 
+start the game "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://tvab24387o5k"]
+
+[ext_resource type="Script" uid="uid://dt26axwtsnhop" path="res://Scripts/bird.gd" id="1_mcegt"]
+[ext_resource type="Texture2D" uid="uid://ndn60r22wk6e" path="res://Assets/art/pixil-frame-0.png" id="2_mcegt"]
+[ext_resource type="AudioStream" uid="uid://djmp15bbuf3wv" path="res://Assets/Music/idle_flapping.mp3" id="3_dnvpi"]
+[ext_resource type="AudioStream" uid="uid://c38bfg0eqump3" path="res://Assets/Music/Dead.mp3" id="4_vl8r2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnvpi"]
+atlas = ExtResource("2_mcegt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vl8r2"]
+atlas = ExtResource("2_mcegt")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rr33m"]
+atlas = ExtResource("2_mcegt")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xf4a6"]
+atlas = ExtResource("2_mcegt")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfwoh"]
+atlas = ExtResource("2_mcegt")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_om1ab"]
+atlas = ExtResource("2_mcegt")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_om1ab"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnvpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vl8r2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rr33m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xf4a6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfwoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_om1ab")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oc6qe"]
+size = Vector2(24, 16)
+
+[node name="Bird" type="CharacterBody2D" unique_id=1850991169]
+texture_filter = 1
+scale = Vector2(2, 2)
+script = ExtResource("1_mcegt")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=769690937]
+sprite_frames = SubResource("SpriteFrames_om1ab")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.31365493
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1627707714]
+position = Vector2(2.3841858e-07, 0)
+shape = SubResource("RectangleShape2D_oc6qe")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1390607696]
+stream = ExtResource("3_dnvpi")
+volume_db = 2.0
+autoplay = true
+parameters/looping = true
+
+[node name="Dead" type="AudioStreamPlayer2D" parent="." unique_id=163505669]
+stream = ExtResource("4_vl8r2")
+volume_db = 1.0

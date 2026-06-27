@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://cfa7dfu64iihp"]
+
+[ext_resource type="Texture2D" uid="uid://cwdr77033j8q" path="res://Assets/art/pixil-frame-0 (2).png" id="1_1rerr"]
+[ext_resource type="Texture2D" uid="uid://ndn60r22wk6e" path="res://Assets/art/pixil-frame-0.png" id="2_xhh6f"]
+[ext_resource type="FontFile" uid="uid://d08acq0h0yijb" path="res://Assets/fonts/MonsterFriendFore.otf" id="4_wwsa2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cayip"]
+atlas = ExtResource("2_xhh6f")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_158mb"]
+atlas = ExtResource("2_xhh6f")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwsa2"]
+atlas = ExtResource("2_xhh6f")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsrd8"]
+atlas = ExtResource("2_xhh6f")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbdvm"]
+atlas = ExtResource("2_xhh6f")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3rjx"]
+atlas = ExtResource("2_xhh6f")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6swd7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cayip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_158mb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwsa2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsrd8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbdvm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3rjx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Menu" type="Node2D" unique_id=136682894]
+
+[node name="Title" type="Sprite2D" parent="." unique_id=1156483728]
+texture_filter = 1
+scale = Vector2(5, 5)
+texture = ExtResource("1_1rerr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1860493238]
+texture_filter = 1
+position = Vector2(157.99998, 16.999998)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_6swd7")
+autoplay = "default"
+flip_h = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1582989307]
+modulate = Color(0.9413647, 0.9413647, 0.94136465, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -252.29001
+offset_top = 271.45
+offset_right = 242.71011
+offset_bottom = 469.45013
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_constants/line_separation = 21
+theme_override_fonts/normal_font = ExtResource("4_wwsa2")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "press [color=green] ENTER [/color] to 
+start the game "
+horizontal_alignment = 1
+vertical_alignment = 1

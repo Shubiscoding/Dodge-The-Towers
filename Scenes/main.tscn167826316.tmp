@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bp703i14xel6"]
+
+[ext_resource type="Script" uid="uid://cctf0gqf6j1jj" path="res://Scripts/main.gd" id="1_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://tvab24387o5k" path="res://Scenes/bird.tscn" id="1_jjgbg"]
+
+[node name="Main" type="Node2D" unique_id=1997216893]
+script = ExtResource("1_bo1nx")
+
+[node name="Bird" parent="." unique_id=1850991169 instance=ExtResource("1_jjgbg")]
+position = Vector2(97, 342)
+
+[node name="Towers" type="Node2D" parent="." unique_id=1741339882]
+
+[node name="Timer" type="Timer" parent="." unique_id=125696227]
+wait_time = 1.5
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

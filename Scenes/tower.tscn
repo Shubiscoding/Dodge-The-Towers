@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://dtsn157rw46b6"]
+
+[ext_resource type="Script" uid="uid://cy11inx7m1pdd" path="res://Scripts/tower.gd" id="1_mh5eo"]
+[ext_resource type="Texture2D" uid="uid://1fvo46mt0dwd" path="res://Assets/art/towre.png" id="1_ndpwd"]
+[ext_resource type="AudioStream" uid="uid://ck87r2kbhy7io" path="res://Assets/Music/ScorePoint.mp3" id="3_tghyl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ndpwd"]
+size = Vector2(224, 980)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mh5eo"]
+size = Vector2(214, 256)
+
+[node name="Tower" type="Area2D" unique_id=772176409]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_mh5eo")
+
+[node name="OnscreenUpper" type="Sprite2D" parent="." unique_id=111708916]
+texture_filter = 1
+rotation = -3.1415925
+texture = ExtResource("1_ndpwd")
+metadata/_edit_group_ = true
+
+[node name="OffscreenUpper" type="Sprite2D" parent="." unique_id=986569551]
+texture_filter = 1
+position = Vector2(15.999999, -320)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("1_ndpwd")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(-4.395, 236.79987, 423.737, 317.84015)
+metadata/_edit_group_ = true
+
+[node name="OnscreenLower" type="Sprite2D" parent="." unique_id=1920702281]
+texture_filter = 1
+position = Vector2(0, 700.525)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("1_ndpwd")
+metadata/_edit_group_ = true
+
+[node name="OffscreenUpper2" type="Sprite2D" parent="." unique_id=1835366187]
+texture_filter = 1
+position = Vector2(16, -570)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("1_ndpwd")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(-4.395, 236.79987, 423.737, 317.84015)
+metadata/_edit_group_ = true
+
+[node name="OffscreenLower2" type="Sprite2D" parent="." unique_id=196574851]
+texture_filter = 1
+position = Vector2(16, 1072.755)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("1_ndpwd")
+offset = Vector2(-32.045, 0)
+region_enabled = true
+region_rect = Rect2(-4.395, 236.79987, 423.737, 317.84015)
+metadata/_edit_group_ = true
+
+[node name="OffscreenLower3" type="Sprite2D" parent="." unique_id=1403641036]
+texture_filter = 1
+position = Vector2(16, 1321.73)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("1_ndpwd")
+offset = Vector2(-32.045, 0)
+region_enabled = true
+region_rect = Rect2(-4.395, 236.79987, 423.737, 317.84015)
+metadata/_edit_group_ = true
+
+[node name="UpperCollision" type="CollisionShape2D" parent="." unique_id=828424814]
+z_index = 1
+position = Vector2(0, -277.685)
+rotation = -3.1415925
+shape = SubResource("RectangleShape2D_ndpwd")
+
+[node name="LowerCollision" type="CollisionShape2D" parent="." unique_id=545517587]
+z_index = 1
+position = Vector2(0, 984.465)
+rotation = -3.1415925
+shape = SubResource("RectangleShape2D_ndpwd")
+
+[node name="ScoreArea" type="Area2D" parent="." unique_id=1877884795]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea" unique_id=1205533912]
+position = Vector2(1, 350)
+shape = SubResource("RectangleShape2D_mh5eo")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1480755591]
+stream = ExtResource("3_tghyl")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="ScoreArea" to="." method="_on_score_area_body_entered"]
